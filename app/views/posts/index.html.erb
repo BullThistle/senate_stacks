@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<h1 class="title">Crypto Tracker Forum</h1>
+<div class="pad center">
+  <table class="center">
+    <thead>
+      <tr>
+        <th width="200">Title</th>
+        <th width="500">Post</th>
+        <th width="150">User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.body %></td>
+          <td><%= post.user.email %></td>
+          <td><%= link_to 'Show', post %></td>
+          <% if post.user == current_user %>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Post', new_post_path, :class => 'button' %>
+</div>

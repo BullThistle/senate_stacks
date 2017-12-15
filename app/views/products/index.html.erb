@@ -1,0 +1,26 @@
+<div class="parent">
+
+  <div class="left-content">
+
+  </div>
+
+  <div class="middle-content center">
+    <% @products.each do |product| %>
+     <p><%= product.name %> | <%= number_to_currency product.price %>
+     <%= form_with model: @order_items do |f| %>
+       <div class="large-2 columns">
+         <div class="field">
+           <%= f.hidden_field :product_id, value: product.id %>
+           <%= f.number_field :quantity %>
+         </div>
+         <%= f.submit "Add to cart", :class => 'button'  %>
+       </div>
+     <% end %></p>
+    <% end %>
+  </div>
+
+  <div class="right-content">
+
+  </div>
+
+</div>

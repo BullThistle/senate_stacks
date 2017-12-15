@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Crypto Tracker" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text">Senate Stacks</li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <% if user_signed_in? %>
+                <li class="<%= yield(:homeActive) %>"><a href="/">Home</a></li>
+                <li class="<%= yield(:homeActive) %>"><a href="/products">Products</a></li>
+                <li class="<%= yield(:homeActive) %>"><a href="/orders">Order</a></li>
+                <li class="<%= yield(:homeActive) %>"><a href="/forum">Forum</a></li>
+                <li class="<%= yield(:aboutActive) %>"><a href="/about">About</a></li>
+                <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                <li><%= link_to "Log In", new_user_session_path %></li>
+              <% end %>
+        </ul>
+      </div>
+    </div>
+    <% if flash[:notice] %>
+      <div class="success callout small" data-closable="slide-out-right">
+        <p><%= notice %></p>
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert callout small" data-closable="slide-out-right">
+        <p><%= alert %></p>
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+    <%= yield %>
+
+  </body>
+</html>

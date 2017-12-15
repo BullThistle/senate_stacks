@@ -1,0 +1,44 @@
+<h2 class="center top-pad">Sign Up</h2>
+<div class="center">
+  <%= image_tag 'flag.png', size: "300x250", alt: "flag" %>
+</div>
+<div class="parent">
+
+  <div class="left-content">
+
+  </div>
+
+  <div class="middle-content">
+    <div class="center">
+      <div class="large-12 columns">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br/>
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+        <div class="actions">
+          <%= f.submit 'Sign Up', :class => 'button' %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-content">
+
+  </div>
+
+</div>
