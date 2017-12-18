@@ -41,6 +41,8 @@ gem "paperclip", "~> 4.2"
 gem 'rest-client'
 gem 'dotenv-rails'
 gem 'httparty'
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+gem 'hashie'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
