@@ -40,7 +40,7 @@ gem 'faker'
 gem "paperclip", "~> 4.2"
 gem 'rest-client'
 gem 'dotenv-rails'
-gem 'faraday'
+gem 'httparty'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
